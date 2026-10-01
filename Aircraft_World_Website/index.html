@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aircraft World: Explore. Compare. Discover.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Barlow:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVIGATION: data-view switches page, data-cat opens the database pre-filtered -->
+<header class="nav">
+  <a href="#" class="logo" data-view="home">AIRCRAFT <b>WORLD</b></a>
+  <button id="burger" aria-label="Open menu" aria-expanded="false">Menu</button>
+  <nav id="menu">
+    <a href="#" data-view="home">Home</a>
+    <a href="#" data-cat="Fighter">Fighter Aircraft</a>
+    <a href="#" data-cat="Commercial">Commercial Aircraft</a>
+    <a href="#" data-cat="Military">Military Aircraft</a>
+    <a href="#" data-cat="Cargo">Cargo Aircraft</a>
+    <a href="#" data-cat="Private Jet">Private Jets</a>
+    <a href="#" data-view="compare">Compare</a>
+    <a href="#" data-view="quiz">Aviation Quiz</a>
+    <a href="#" data-view="about">About</a>
+  </nav>
+</header>
+
+<main>
+<!-- HOME -->
+<section class="view" id="home">
+  <div class="hero">
+    <svg class="path" viewBox="0 0 800 300" preserveAspectRatio="none" aria-hidden="true"><path d="M0 280 C200 260 400 150 800 20" fill="none" stroke="#3b9cff" stroke-width="1.5" stroke-dasharray="3 9"/></svg>
+    <p class="tag">Explore. Compare. Discover.</p>
+    <h1>EXPLORE THE WORLD OF AIRCRAFT</h1>
+    <p class="sub">Discover the technology, history and specifications behind the world's most fascinating aircraft.</p>
+    <div class="btns"><button class="btn" data-view="database">Explore Aircraft</button><button class="btn ghost" data-view="compare">Compare Aircraft</button></div>
+  </div>
+  <div class="wrap">
+    <h2>Featured aircraft</h2><div class="grid" id="featured"></div>
+    <h2>Aircraft categories</h2><div class="cats" id="cats"></div>
+    <h2>Popular aircraft</h2><div class="chips" id="popular"></div>
+    <h2>Did you know?</h2><div class="facts" id="facts"></div>
+    <div class="cta glass"><h2>Ready to dig deeper?</h2><p>Search the full database by name, country, manufacturer or generation.</p><button class="btn" data-view="database">Open the aircraft database</button></div>
+  </div>
+</section>
+
+<!-- DATABASE -->
+<section class="view" id="database"><div class="wrap">
+  <h2 id="dbTitle">Aircraft database</h2>
+  <div class="filters glass">
+    <input id="q" type="search" placeholder="Search name, maker or country" aria-label="Search aircraft">
+    <select id="fCat" aria-label="Category"></select>
+    <select id="fCountry" aria-label="Country"></select>
+    <select id="fMaker" aria-label="Manufacturer"></select>
+    <select id="fGen" aria-label="Generation"></select>
+    <select id="sort" aria-label="Sort">
+      <option value="name">Sort: name</option><option value="year">Sort: first flight</option>
+      <option value="range">Sort: range</option><option value="speed">Sort: max speed</option>
+    </select>
+    <button class="btn ghost" id="reset">Reset filters</button>
+  </div>
+  <p id="count" class="muted"></p>
+  <div class="grid" id="results"></div>
+</div></section>
+
+<!-- COMPARE -->
+<section class="view" id="compare"><div class="wrap">
+  <h2>Compare two aircraft</h2>
+  <div class="pick glass">
+    <select id="cmpA" aria-label="First aircraft"></select>
+    <button class="btn ghost" id="swap">Swap</button>
+    <select id="cmpB" aria-label="Second aircraft"></select>
+  </div>
+  <p class="muted">Rows that differ are highlighted. Values are for the variant named in each aircraft's title.</p>
+  <div class="scroll"><table class="cmp" id="cmpTable"></table></div>
+</div></section>
+
+<!-- QUIZ -->
+<section class="view" id="quiz"><div class="wrap"><h2>Aviation quiz</h2><div class="glass quizbox" id="quizBox"></div></div></section>
+
+<!-- ABOUT -->
+<section class="view" id="about"><div class="wrap narrow">
+  <h2>About Aircraft World</h2>
+  <p>Aircraft World is an educational aviation encyclopedia created to help aviation enthusiasts explore aircraft technology and history. Browse fighters, airliners, cargo aircraft, private jets and helicopters, read their specifications, and compare any two side by side.</p>
+  <p>Specifications are approximate and often differ by variant, so each aircraft name states which variant the numbers describe.</p>
+</div></section>
+</main>
+
+<!-- DETAIL MODAL -->
+<div id="modal" class="modal" hidden><div class="panel glass" role="dialog" aria-modal="true" aria-labelledby="mTitle"><button id="mClose" class="x" aria-label="Close">×</button><div id="mBody"></div></div></div>
+
+<footer>
+  <div class="wrap fgrid">
+    <div><a href="#" class="logo" data-view="home">AIRCRAFT <b>WORLD</b></a><p class="muted">Built for aviation enthusiasts.</p></div>
+    <div><h4>Explore</h4><a href="#" data-view="home">Home</a><a href="#" data-view="compare">Compare</a><a href="#" data-view="quiz">Aviation Quiz</a><a href="#" data-view="about">About</a></div>
+    <div><h4>Categories</h4><a href="#" data-cat="Fighter">Fighter Aircraft</a><a href="#" data-cat="Commercial">Commercial Aircraft</a><a href="#" data-cat="Cargo">Cargo Aircraft</a><a href="#" data-cat="Private Jet">Private Jets</a></div>
+  </div>
+  <p class="copy muted">© 2026 Aircraft World. Educational project.</p>
+</footer>
+
+<script src="aircraft-data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
